@@ -2,8 +2,10 @@ require 'rails_helper'
 
 describe "Author edit page", type: :feature do
   it "should render without error" do
-    visit authors_path
-    expect(page).to have_link('Edit')
-    save_and_open_page
+	Author.create(
+	    first_name: 'Alan', 
+	    last_name: 'Turing', 
+	    homepage: 'http://wikipedia.org/Alan_Turing')
+    visit 'authors/1/edit'
   end
 end

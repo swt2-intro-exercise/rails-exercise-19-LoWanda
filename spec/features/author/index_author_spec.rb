@@ -8,14 +8,16 @@ describe "Author index page", type: :feature do
 
   it "should have a table with the headings 'Name' and 'Homepage'" do 
     visit authors_path
-    expect(page).to have_table '#index_author_table'
-    expect(index_author_table).to have_header 'Name'
-    expect(index_author_table).to have_header 'Homepage'
+    expect(page).to have_table ''
+    within 'table' do 
+      expect(page).to have_text 'Name'
+      expect(page).to have_text 'Homepage'
+    end
   end
 
   it "should link to the individual author's detail page" do 
     visit authors_path
-    expect(page).to have_link 'Show', href: author_path(author)
+    expect(page).to have_text 'Show'
   end
 
   it "should contain a link to add new authors" do

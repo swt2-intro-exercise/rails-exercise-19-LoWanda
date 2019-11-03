@@ -8,4 +8,9 @@ describe Paper, type: :model do
     expect(paper.venue).to eq('Mind 49: 433-460')
     expect(paper.year).to eq(1950)
   end
+
+  it "should have an empty list of authors" do
+    paper = create(:paper)
+    expect(paper.authors).to eq([])
+  end
 end

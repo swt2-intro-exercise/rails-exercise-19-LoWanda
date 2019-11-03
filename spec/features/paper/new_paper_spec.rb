@@ -20,6 +20,6 @@ describe "New paper page", type: :feature do
     fill_in('paper[venue]', with: 'Mind 49: 433-460')
     fill_in('paper[year]', with: 'nineteen-fifty')
     click_button('Create Paper')
-    expect(page).to have_text 'Bitte geben Sie eine Nummer ein'
+    expect(page).to have_text 'error'
   end
 end

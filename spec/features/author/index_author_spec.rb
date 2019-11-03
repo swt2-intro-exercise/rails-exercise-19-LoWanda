@@ -1,7 +1,14 @@
 require 'rails_helper'
 
 describe "Author index page", type: :feature do
-  
+
+  before :each do
+    Author.create(
+      first_name: 'Alan', 
+      last_name: 'Turing', 
+      homepage: 'http://wikipedia.org/Alan_Turing')
+  end
+
   it "should render without error" do
     visit authors_path
   end
@@ -24,6 +31,11 @@ describe "Author index page", type: :feature do
     visit authors_path
     expect(page).to have_link 'New', href: new_author_path
   end
+
+  it "should have a link to delete an author" do
+    visit authors_path
+    counter = Author.count
+    click_link 'Delete'
+    expect(counter).to eq(Author.count + 1)
+  end
 end
-
-

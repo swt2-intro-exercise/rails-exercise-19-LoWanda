@@ -3,10 +3,7 @@ require 'rails_helper'
 describe "Author index page", type: :feature do
 
   before :each do
-    Author.create(
-      first_name: 'Alan', 
-      last_name: 'Turing', 
-      homepage: 'http://wikipedia.org/Alan_Turing')
+    @author = create(:author)   
   end
 
   it "should render without error" do

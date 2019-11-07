@@ -18,8 +18,9 @@ describe "Edit Paper page", type: :feature do
   		homepage: 'homepage')
   	visit edit_paper_path(@paper)
     select @author.name, from: 'paper[author_ids][]'
-    save_and_open_page
     click_button 'Update Paper'
-    expect(@paper.authors).to include('Peter Plagiarist', 'Alan Turing')
+    @paper.reload
+    expect(page).to have_text(@author.name)
+    expect(page).to have_text('Alan Turing')
   end
 end

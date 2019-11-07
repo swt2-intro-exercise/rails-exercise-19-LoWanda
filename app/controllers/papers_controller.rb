@@ -8,7 +8,6 @@ class PapersController < ApplicationController
 
   # GET /papers/1
   def show
-    @paper = Paper.find(params[:id])
   end
 
   # GET /papers/new
@@ -17,18 +16,13 @@ class PapersController < ApplicationController
   end
 
   # GET /papers/1/edit
-  def edit
-    @paper = Paper.find(params[:id])   
+  def edit 
   end
 
   # POST /papers
   def create
-    # @author = Author.find(authors_params)
-#    @paper = @author.papers.create(paper_params)
     @paper = Paper.new(paper_params)
-    
-    # @author = @paper.authors.create(author_params
-    # @paper.authors = Author.find(authors_params)
+
     if @paper.save
       redirect_to @paper, notice: 'Paper was successfully created.'
     else
@@ -59,6 +53,6 @@ class PapersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def paper_params
-      params.require(:paper).permit(:title, :venue, :year, :author_id => [])
+      params.require(:paper).permit(:title, :venue, :year, :author_ids => [])
     end
 end

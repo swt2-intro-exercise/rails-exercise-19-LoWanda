@@ -17,7 +17,7 @@ describe "New author page", type: :feature do
     visit new_author_path
     fill_in('author[first_name]', with: 'Alan')
     fill_in('author[last_name]', with: 'Turing')
-    click_button('Save Author')
+    click_button('Create Author')
     expect(page).to have_text 'error'
   end
 end

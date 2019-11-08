@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe "Index Paper Page", type: :feature do
+
   it "should allow filtering papers by year" do
   	paper1 = Paper.create(
   		title: 'title',
@@ -14,4 +15,5 @@ describe "Index Paper Page", type: :feature do
   	expect(page).to have_text('1950')
   	expect(page).to have_no_text('1968')
   end
+  
 end

@@ -4,14 +4,10 @@ describe "Author edit page", type: :feature do
 
   before :each do
     @author = create(:author)   
-  end
-
-  it "should render without error" do
-    visit 'authors/1/edit'
+    visit edit_author_path(@author)
   end
 
   it "should update the author after editing" do 
-    visit 'authors/1/edit'
     fill_in('author[first_name]', with: 'Lara')
     click_button('Update Author')
     @author.reload
